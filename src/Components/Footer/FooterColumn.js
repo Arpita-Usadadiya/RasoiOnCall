@@ -8,7 +8,7 @@ export default function FooterColumn({ title, links }) {
         {links.map((link, i) => (
           <li key={i}>
             <a
-              href="#"
+              href="/"
               className="hover:text-white transition"
             >
               {link}
