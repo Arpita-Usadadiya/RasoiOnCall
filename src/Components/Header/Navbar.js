@@ -73,7 +73,7 @@ const Navbar = () => {
                 )}
               </div>
 
-              <Link to="/join-chef" className="hover:text-orange-500">
+              <Link to="join-chef" className="hover:text-orange-500">
                 Join as Chef
               </Link>
 
