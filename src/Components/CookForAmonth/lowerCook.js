@@ -1,5 +1,5 @@
 import React from "react";
-import chefImg from "../../assets/chefImg.png";
+import ChefImg3 from "../../assets/ChefImg3.png";
 
 const LowerCook = () => {
   return (
@@ -8,7 +8,7 @@ const LowerCook = () => {
       
       <div className="md:w-1/2 w-full h-full">
         <img
-          src={chefImg}
+          src={ChefImg3}
           alt="Cooks"
           className="w-full h-full object-cover"
         />

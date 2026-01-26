@@ -1,85 +1,83 @@
 import React, { useState, useEffect } from "react";
+import ChefImg4 from "../../assets/ChefImg4.png";
+import ChefImg2 from "../../assets/ChefImg2.png";
+import ChefImg1 from "../../assets/ChefImg1.png";
 
 const slides = [
   {
-    title: "THSC राष्ट्रीय व्यावसायिक मानक",
-    description:
-      "THSC राष्ट्रीय व्यावसायिक मानक-आधारित ट्रेनिंग देने में गुणवत्ता को बनाए रखने के लिए समर्पित है।",
-    image:
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1600",
+    title: "RasoiOnCall નો ભાગ બનો",
+    desc: "4500+થી વધુ રસોઈયાઓ સાથે જોડાઓ અને તમારી કુશળતાને આગળ વધારો.",
+    btn: "RasoiOnCall સાથે જોડાઓ",
+    image: ChefImg4,
   },
   {
-    title: "Skill India Initiative",
-    description:
-      "ChefKart स्किल इंडिया के साथ जुड़कर अपने कुक्स को ट्रेनिंग दिलवाती है जिससे उन्हें प्रमाणपत्र मिलता है।",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600",
+    title: "સમાજનો દૃષ્ટિકોણ બદલો",
+    desc: "દેશમાં રસોઈયાઓ અને તેમના પરિવાર માટે સન્માન અને ઓળખ બદલવામાં અમારી સાથે જોડાઓ.",
+    btn: "RasoiOnCall સાથે જોડાઓ",
+    image: ChefImg2,
   },
   {
-    title: "NCVET प्रमाणन",
-    description:
-      "NCVET व्यावसायिक ट्रेनिंग संस्थानों के लिए न्यूनतम गुणवत्ता मानक स्थापित करता है।",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600",
+    title: "સન્માન સાથે કમાણી કરો",
+    desc: "તમારી રસોઈ કળાને એક નવી શરૂઆત આપો અને તેની મદદથી આવક મેળવો.",
+    btn: "RasoiOnCall સાથે જોડાઓ",
+    image: ChefImg1,
   },
 ];
 
-const HeroCarousel = () => {
+const Carousel3 = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
-
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="relative w-full h-[70vh] overflow-hidden">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === current ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `url(${slide.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          {/* overlay */}
-          <div className="absolute inset-0 bg-black/50" />
+    <section className="relative w-full h-[90vh] md:min-h-screen overflow-hidden  bg-black">
 
-          {/* content */}
-          <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex items-center">
-            <div className="text-white max-w-xl">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                {slide.title}
-              </h1>
-              <p className="text-lg md:text-xl leading-relaxed">
-                {slide.description}
-              </p>
-            </div>
-          </div>
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-no-repeat bg-center md:bg-right bg-cover  transition-all duration-700"
+        style={{ backgroundImage: `url(${slides[current].image})` }}
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 py-16 md:py-24 h-full flex items-center">
+        <div className="w-full md:w-1/2 text-white text-center md:text-left">
+
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
+            {slides[current].title}
+          </h1>
+
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-gray-200 max-w-md mx-auto md:mx-0">
+            {slides[current].desc}
+          </p>
+
+          <button className="mt-6 sm:mt-8 bg-orange-500 hover:bg-orange-600 transition px-8 sm:px-10 py-3 rounded-md font-semibold shadow-lg">
+            {slides[current].btn}
+          </button>
         </div>
-      ))}
+      </div>
 
-      {/* dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
-        {slides.map((_, i) => (
+      {/* Dots */}
+      <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3">
+        {slides.map((_, index) => (
           <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-3 h-3 rounded-full ${
-              current === i ? "bg-orange-500" : "bg-white/60"
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`h-2 w-8 md:w-10 rounded-full transition-all ${
+              current === index ? "bg-orange-500" : "bg-white/40"
             }`}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default HeroCarousel;
+export default Carousel3;

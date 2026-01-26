@@ -51,7 +51,7 @@ const Work = () => {
               </div>
 
               
-              <div className="w-32 h-32 mb-6 flex items-center justify-center">
+              <div className="w-32 h-32 mb-6 mt-10 flex items-center justify-center">
                 <img
                   src={step.img}
                   alt={step.title}
@@ -70,6 +70,11 @@ const Work = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div>
+        <button className="mt-10 mb-10 mr-10 float-right px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition">
+          Book Now
+        </button>
       </div>
     </section>
   );

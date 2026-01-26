@@ -1,4 +1,5 @@
 import React from "react";
+import ChefImg2 from "../../assets/ChefImg2.png"
 
 const Cater = () => {
   return (
@@ -6,7 +7,7 @@ const Cater = () => {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
-            <h1 className="text-center text-black text-3xl md:text-5xl font-bold mb-16 px-4 w-full">Chefkart માં શા માટે જોડાઓ? </h1>
+            <h1 className="text-center text-black text-3xl md:text-5xl font-bold mb-16 px-4 w-full">RasoiOnCall માં શા માટે જોડાઓ? </h1>
             <div className="p-4 md:w-1/3">
               <div className="h-full border-2 rounded-lg overflow-hidden">
                 <img
@@ -28,8 +29,8 @@ const Cater = () => {
             <div className="p-4 md:w-1/3">
               <div className="h-full border-2  rounded-lg overflow-hidden">
                 <img
-                  className="lg:h-48 md:h-36 w-full object-cover object-center"
-                  src="https://dummyimage.com/721x401"
+                  className="lg:h-48 md:h-36 w-full  object-center"
+                  src= {ChefImg2}
                   alt="blog"
                 />
                 <div className="p-6">

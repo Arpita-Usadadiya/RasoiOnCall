@@ -1,38 +1,44 @@
 import React, { useState } from "react";
+import websiteBanner from "../../assets/websiteBanner.png";
 
 const Carousel2 = () => {
   const slides = [
     {
-      description:
-        "Professional & background verified cook for a month for you to enjoy home-cooked food every day.",
-      bgImage:
-        "https://thechefkart.com/_next/image?url=https%3A%2F%2Fchefkart-strapi-media.s3.ap-south-1.amazonaws.com%2FJoin_as_chef_hero_banner_01_f31e87e92e.webp&w=1920&q=75",
+      bgImage: websiteBanner,
     },
   ];
 
   const [currentSlide] = useState(0);
 
   return (
-    <div className="relative w-full h-screen">
+    <section className="relative w-full h-[90vh] overflow-hidden">
+      
+      
       <div
-        className="w-full h-full flex items-center text-white bg-cover bg-center"
+        className="absolute inset-0 bg-no-repeat bg-cover bg-right"
         style={{
           backgroundImage: `url(${slides[currentSlide].bgImage})`,
         }}
-      >
-        <div className="w-full md:w-1/2 p-10 md:p-16 ml-4">
-          <h1 className="text-6xl font-bold mt-3">
+      />
+
+     
+      <div className="absolute inset-0 bg-black/60" />
+
+      <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-6 md:px-16">
+        <div className="text-white max-w-xl">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             Trusted By 10K+ <br />
             Households <br />
             <span className="text-orange-500">To Hire a Cook</span>
           </h1>
 
-          <button className="bg-orange-500 text-white font-bold text-lg md:text-xl px-8 py-4 rounded-md mt-5 shadow-lg hover:bg-orange-600 transition-all">
+          <button className="mt-10 bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-md text-lg font-semibold">
             Get Started
           </button>
         </div>
       </div>
-    </div>
+
+    </section>
   );
 };
 

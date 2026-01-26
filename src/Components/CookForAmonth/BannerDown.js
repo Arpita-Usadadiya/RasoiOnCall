@@ -8,7 +8,6 @@ const BannerDown = () => {
         <section className="text-orange-600 body-font">
           <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 flex flex-wrap items-center">
             
-            {/* LEFT */}
             <div className="md:w-1/2 md:pr-12 md:border-r border-orange-500 mb-10 md:mb-0">
               <h1 className="text-3xl font-bold mb-2 text-orange-500">
                 Why Choose?
@@ -29,9 +28,9 @@ const BannerDown = () => {
 
           </div>
         </section>
+      <ShowCard />
       </div>
 
-      <ShowCard />
     </>
   );
 };

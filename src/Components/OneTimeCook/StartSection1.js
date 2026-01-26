@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import { GiMeal, GiChefToque, GiHouse } from "react-icons/gi";
 
-const Stats = () => {
-  return (
+const StartSection1 = () => {
+   return (
     <section className="w-full bg-white py-14 border-b">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 text-center gap-16">
@@ -34,6 +34,6 @@ const Stats = () => {
       </div>
     </section>
   );
-};
+}
 
-export default Stats;
+export default StartSection1
