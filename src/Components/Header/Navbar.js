@@ -114,6 +114,8 @@ const Navbar = () => {
             <hr />
             <Link to="/blog" onClick={() => setIsMenuOpen(false)}>Blog</Link>
             <hr />
+            <Link to="/investor" onClick={() => setIsMenuOpen(false)}>Investor</Link>
+            <hr />
             <Link to="/career" onClick={() => setIsMenuOpen(false)}>Careers</Link>
             <hr />
             <Link to="/testimonial" onClick={() => setIsMenuOpen(false)}>Testimonials</Link>

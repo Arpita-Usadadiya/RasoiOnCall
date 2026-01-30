@@ -1,0 +1,47 @@
+import React, { useEffect, useRef, useState } from "react";
+
+const FloatingBanner = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div
+      className={`fixed bottom-0 left-0 right-0 bg-gray-100 shadow-md transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        
+        {/* Text */}
+        <p className="text-gray-700 text-sm md:text-base font-medium">
+          Hosting a party? Book your Chefit now and delight your guests with an
+          in-home cooked meal!!
+        </p>
+
+        {/* Button */}
+        <button className="bg-orange-500 text-white px-5 py-2 rounded-lg text-sm font-semibold whitespace-nowrap">
+          Book Now
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default FloatingBanner;

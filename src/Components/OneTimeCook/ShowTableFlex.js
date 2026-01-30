@@ -35,7 +35,7 @@ const cardData = [
 
 const ShowTableFlex = () => {
   return (
-    <section className="py-10 md:py-14 bg-white">
+    <section className="py-14 bg-white ml-10 mr-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">

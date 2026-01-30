@@ -14,6 +14,11 @@ import ChefConnection from "./Components/ChefConnections/ChefConnection";
 import Month from "./Components/CookForAmonth/Month";
 import OneTime from "./Components/OneTimeCook/OneTime";
 import Party from "./Components/PartyChef/Party";  
+import ChatBot from "./Components/chatbot/ChatBot";
+import Career from "./Components/Career/Career";
+import Invest from "./Components/Investor/Invest";
+import Testi from "./Components/Testimonial/Testi";
+import Blog from "./Components/Blog/Blog";
 
 const App = () => {
   useEffect(() => {
@@ -28,9 +33,15 @@ const App = () => {
     <div>
       <NotificationBanner />
       <Navbar />
+      <ChatBot />
       <Routes>
+
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />}/>
+        <Route path="/blog" element={<Blog />}/>
+        <Route path="/career" element={<Career />}/>
+        <Route path="/testimonial" element={<Testi />}/>
+        <Route path="/investor" element={<Invest />}/>
         <Route path="/contact" element={<Contact />} />
         <Route path="/cooks-near-me" element={<h1 className="p-10">Cooks Near Me</h1>} />
         <Route path="/join-chef" element={<ChefConnection />} />        
