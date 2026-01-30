@@ -6,7 +6,7 @@ const GallerySection = () => {
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col mb-10 text-center">
           <h1 className="text-4xl font-bold text-black">
-            The People Behind <span className="text-red-500">ChefKart</span>
+            The People Behind <span className="text-red-500">RasoiOnCall</span>
           </h1>
         </div>
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 justify-center">

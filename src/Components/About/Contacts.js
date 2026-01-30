@@ -17,7 +17,7 @@ const Contacts = () => {
           {/* Form Section */}
           <div className="lg:w-1/3 md:w-1/2 w-full bg-white flex flex-col md:ml-auto md:py-8 mt-8 md:mt-0">
             <h2 className="text-gray-900 mb-1 text-3xl font-medium title-font text-center">
-              Operating in Gurgaon!
+              Operating in Gujarat!
             </h2>
 
             {/* Name Input */}
