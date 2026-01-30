@@ -19,6 +19,7 @@ import Career from "./Components/Career/Career";
 import Invest from "./Components/Investor/Invest";
 import Testi from "./Components/Testimonial/Testi";
 import Blog from "./Components/Blog/Blog";
+import Recommendations from "./Components/Recommendation/Recommendations";
 
 const App = () => {
   useEffect(() => {
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/career" element={<Career />}/>
         <Route path="/testimonial" element={<Testi />}/>
         <Route path="/investor" element={<Invest />}/>
+        <Route path="/recommendations" element={<Recommendations />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cooks-near-me" element={<h1 className="p-10">Cooks Near Me</h1>} />
         <Route path="/join-chef" element={<ChefConnection />} />        
