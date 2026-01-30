@@ -1,4 +1,4 @@
-import PreferenceForm from "./PreferenceForm";
+
 import RecommendationList from "./RecommendationList";
 
 const Recommendations = () => {
@@ -8,7 +8,6 @@ const Recommendations = () => {
         Smart Chef Recommendations 🤖
       </h1>
 
-      <PreferenceForm />
       <RecommendationList />
     </section>
   );
