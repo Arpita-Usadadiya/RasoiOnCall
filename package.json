@@ -8,6 +8,8 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^13.5.0",
+    "ajv": "^6.12.6",
+    "ajv-keywords": "^3.5.2",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
     "i18next": "^25.8.0",
@@ -48,8 +50,8 @@
     ]
   },
   "engines": {
-  "node": "24.x"
-},
+    "node": "24.x"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",
