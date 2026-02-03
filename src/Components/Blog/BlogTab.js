@@ -14,7 +14,7 @@ const TabSwitch = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/blog/getAll");
+        const res = await axios.get("https://rasoioncallbackend.onrender.com/blog/getAll");
 
         // 🔒 Prevent duplicate blogs using _id
         setData((prevData) => {
