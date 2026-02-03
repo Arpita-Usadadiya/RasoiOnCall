@@ -17,11 +17,11 @@ const HearIt = () => {
           <span className="text-6xl font-bold block mb-6">“</span>
 
           <p className="text-2xl md:text-4xl leading-snug text-gray-900">
-            "RasoiOnCall તમને ક્યારેય એવા ઘરમાં નહીં મોકલે જ્યાં તમારું સન્માન ન થાય."
+            "RasoiOnCall will never send you to a home where you are not treated with respect."
           </p>
 
           <p className="mt-6 text-orange-500 font-bold text-lg md:text-xl">
-            અજનહર બીવી
+            Ajanhar Bivi
           </p>
         </div>
 

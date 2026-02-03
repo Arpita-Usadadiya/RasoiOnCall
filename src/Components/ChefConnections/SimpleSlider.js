@@ -71,24 +71,25 @@ const SimpleSlider = () => {
     slidesToScroll: 1,
   };
 
-  const slides = [
-    {
-      text: `THSC राष्ट्रीय व्यावसायिक मानक-आधारित ट्रेनिंग देने में गुणवत्ता को बनाए रखने के लिए समर्पित है।
-ChefKart से जुड़े कुक्स अपने कौशल को बढ़ाने में इसका लाभ उठा सकते हैं।`,
-      image: thsc,
-    },
-    {
-      text: `ChefKart स्किल इंडिया के साथ जुड़कर अपने कुक्स को ट्रेनिंग दिलवाती है
-जिसके पूरे होते ही कुक्स को सर्टिफिकेट दिया जाता है।`,
-      image: skill,
-    },
-    {
-      text: `NCVET व्यावसायिक ट्रेनिंग में लगी संस्थाओं के कामकाज को
-छोटे और लंबे समय के लिए नियंत्रित करती है और ऐसी संस्थाओं के लिए
-न्यूनतम मानक स्थापित करती है।`,
-      image: ncvet,
-    },
-  ];
+ const slides = [
+  {
+    text: `THSC is committed to maintaining quality by providing training based on National Occupational Standards.
+Cooks associated with RasoiOnCall can benefit by enhancing their skills through this training.`,
+    image: thsc,
+  },
+  {
+    text: `RasoiOnCall collaborates with Skill India to provide professional training to its cooks.
+After successful completion, cooks are awarded a certification.`,
+    image: skill,
+  },
+  {
+    text: `NCVET regulates the functioning of institutions involved in vocational training
+for both short-term and long-term programs and establishes minimum standards
+for such institutions.`,
+    image: ncvet,
+  },
+];
+
 
   return (
     <section className="w-full py-20 bg-white">

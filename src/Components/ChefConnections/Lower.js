@@ -8,19 +8,18 @@ const Lower = () => {
         {/* LEFT SIDE */}
         <div className="pr-4">
           <h2 className="text-4xl md:text-5xl font-bold leading-[3.8rem] text-gray-900">
-            RasoiOnCall ના{" "}
-            <span className="text-orange-500">4500 થી વધુ કૂક્સનો</span>{" "}
-            ભાગ બનો
+            Be a part of RasoiOnCall{" "}
+            <span className="text-orange-500">4,500+ cooks</span>{" "}
+            community
           </h2>
         </div>
 
         {/* RIGHT SIDE */}
         <div className="pt-2">
           <p className="text-gray-700 text-lg leading-relaxed max-w-xl">
-            આજે જ સાઇન અપ કરો અને તમારા રસોડાને નવી ઊંચાઈઓ પર લઈ જાઓ!
-            હજારો ઘર અને પરિવાર સાથે જોડાઓ. RasoiOnCall ની ટ્રેનિંગ અને
-            સહાયથી તમારા રસોઈ કૌશલ્યને એક નવી ઊંચાઈ અને મજબૂત આવકના
-            મોડલમાં બદલો.
+            Sign up today and take your kitchen to new heights!
+            Connect with thousands of homes and families. With RasoiOnCall’s training and support, 
+            transform your cooking skills into a new level of excellence and a strong, reliable source of income.
           </p>
         </div>
 

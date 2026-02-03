@@ -2,20 +2,20 @@ import React, { useState } from "react";
 
 const faqs = [
   {
-  question: "RasoiOnClick સાથે કેવી રીતે જોડાવું?",
-  answer:
-    "RasoiOnClick સાથે જોડાવા માટે ઉપર આપેલ “RasoiOnClick સાથે જોડાવો” બટન પર ક્લિક કરીને ફોર્મ ભરો અથવા મદદ માટે અમારા સપોર્ટ નંબર પર સંપર્ક કરો."
-},
-{
-  question: "RasoiOnClick સાથે કોણ જોડાઈ શકે?",
-  answer:
-    "RasoiOnClick સાથે તે બધા લોકો જોડાઈ શકે છે જેઓને ઘરેલું ભોજન બનાવવાનો અનુભવ હોય અને જેમની ઉંમર 18 વર્ષથી વધુ હોય."
-},
-{
-  question: "RasoiOnClick સાથે જોડાવા માટે કયા દસ્તાવેજોની જરૂર છે?",
-  answer:
-    "RasoiOnClick સાથે જોડાવા માટે તમારે આધાર કાર્ડ, સ્માર્ટફોન, બેંક ખાતાની વિગતો અને પાસપોર્ટ સાઇઝ ફોટો જરૂરી રહેશે."
-},
+    question: "How can I join RasoiOnClick?",
+    answer:
+      "To join RasoiOnClick, click on the “Join RasoiOnClick” button given above and fill out the form, or contact our support number for assistance."
+  },
+  {
+    question: "Who can join RasoiOnClick?",
+    answer:
+      "Anyone who has experience in preparing home-cooked food and is above 18 years of age can join RasoiOnClick."
+  },
+  {
+    question: "What documents are required to join RasoiOnClick?",
+    answer:
+      "To join RasoiOnClick, you will need an Aadhaar card, a smartphone, bank account details, and a passport-size photograph."
+  },
 ];
 
 const Faq2 = () => {

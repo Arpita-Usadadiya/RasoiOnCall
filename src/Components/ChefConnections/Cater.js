@@ -7,7 +7,7 @@ const Cater = () => {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
-            <h1 className="text-center text-black text-3xl md:text-5xl font-bold mb-16 px-4 w-full">RasoiOnCall માં શા માટે જોડાઓ? </h1>
+            <h1 className="text-center text-black text-3xl md:text-5xl font-bold mb-16 px-4 w-full">Why Choose RasoiOnCall?</h1>
             <div className="p-4 md:w-1/3">
               <div className="h-full border-2 rounded-lg overflow-hidden">
                 <img
@@ -17,10 +17,10 @@ const Cater = () => {
                 />
                 <div className="p-6">
                   <h1 className="title-font text-center text-3xl font-bold text-black mb-3">
-                    નિયમિત પૈસા
+                    Regular Payments
                   </h1>
                   <p className="leading-relaxed mb-3 text-center text-xl text-black">
-                    તમારી દૈનિક કમાણીના પૈસા નિયમિત રૂપે તે જ દિવસે મેળવો જ્યારે તમે સેવા પૂરી કરો છો. કોઈ વિલંબ નહીં, કોઈ ઝંઝટ નહીં.
+                    Receive your daily earnings regularly on the same day you complete your service. No delays, no hassles.
                   </p>
                   
                 </div>
@@ -35,10 +35,10 @@ const Cater = () => {
                 />
                 <div className="p-6">
                   <h1 className="title-font text-center text-3xl font-bold text-black mb-3"> 
-                    સન્માન સાથે કામ
+                    Work with Respect
                   </h1>
                   <p className="leading-relaxed mb-3 text-center text-xl text-black">
-                    સમાજમાં એક વ્યાવસાયિક કૂક તરીકે સન્માન અને ઓળખ મેળવો. તમારા કુશળતાને ઉજાગર કરો અને તમારા વ્યવસાયને આગળ વધારવા માટે એક વિશ્વસનીય પ્લેટફોર્મનો લાભ લો.
+                    Gain respect and recognition in society as a professional cook. Showcase your skills and take advantage of a trusted platform to grow your profession.
                   </p>
                  
                 </div>
@@ -53,10 +53,10 @@ const Cater = () => {
                 />
                 <div className="p-6">
                   <h1 className="title-font text-center text-3xl font-bold text-black mb-3">
-                    ટ્રેનિંગ અને સહાયતા
+                    Training and Support
                   </h1>
                   <p className="leading-relaxed mb-3 text-center text-xl text-black">
-                    અમારા શેફ પાસેથી ટ્રેનિંગમાં નવી વાનગીઓ બનાવતા શીખો. કોઈપણ સમસ્યામાં તુરંત સહાયતા મેળવો અને અમારા સમર્પિત સપોર્ટ ટીમ દ્વારા માર્ગદર્શન મેળવો. 
+                    Learn to prepare new dishes through training from our expert chefs. Get instant assistance for any issue and receive guidance from our dedicated support team.
                   </p>       
                 </div>
               </div>

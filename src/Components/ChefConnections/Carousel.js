@@ -6,24 +6,25 @@ import { useNavigate } from "react-router-dom";
 
 const slides = [
   {
-    title: "RasoiOnCall નો ભાગ બનો",
-    desc: "4500+થી વધુ રસોઈયાઓ સાથે જોડાઓ અને તમારી કુશળતાને આગળ વધારો.",
-    btn: "RasoiOnCall સાથે જોડાઓ",
+    title: "Be a part of RasoiOnCall",
+    desc: "Join 4,500+ cooks and take your skills to the next level.",
+    btn: "Join RasoiOnCall",
     image: ChefImg4,
   },
   {
-    title: "સમાજનો દૃષ્ટિકોણ બદલો",
-    desc: "દેશમાં રસોઈયાઓ અને તેમના પરિવાર માટે સન્માન અને ઓળખ બદલવામાં અમારી સાથે જોડાઓ.",
-    btn: "RasoiOnCall સાથે જોડાઓ",
+    title: "Change society’s perspective",
+    desc: "Join us in bringing respect and recognition to cooks and their families across the country.",
+    btn: "Join RasoiOnCall",
     image: ChefImg2,
   },
   {
-    title: "સન્માન સાથે કમાણી કરો",
-    desc: "તમારી રસોઈ કળાને એક નવી શરૂઆત આપો અને તેની મદદથી આવક મેળવો.",
-    btn: "RasoiOnCall સાથે જોડાઓ",
+    title: "Earn with respect",
+    desc: "Give your cooking skills a fresh start and earn a stable income through them.",
+    btn: "Join RasoiOnCall",
     image: ChefImg1,
   },
 ];
+
 
 const Carousel3 = () => {
   const navigate = useNavigate();
