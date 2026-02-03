@@ -1,35 +1,31 @@
 import React from "react";
 
+
 const Carousel3 = () => {
-  const slides = [
-    {
-      title: "What People Think About Us",
-      bgImage:
-        "https://thechefkart.com/_next/image?url=https%3A%2F%2Fchefkart-strapi-media.s3.ap-south-1.amazonaws.com%2FChefit_Hero_banner_f573fdf12c.webp&w=1920&q=75",
-    },
-  ];
-
   return (
-    <div className="relative w-full h-screen">
-      {/* Slide */}
-      <div
-        className="w-full h-full flex items-center justify-center text-white bg-cover bg-center transition-all duration-500"
-        style={{
-          backgroundImage: `url(${slides[0].bgImage})`,
-        }}
-      >
-        {/* Text Section */}
-        <div className="text-center p-6 md:p-16  rounded-lg">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mt-3">
-            What People Think About Us
-          </h1>
-          
+    <div className="relative w-full h-screen overflow-hidden">
 
-          <div className="mt-6">
-            
-          </div>
-        </div>
+      {/* Background Video */}
+      <video
+  className="absolute inset-0 w-full h-full object-cover"
+  autoPlay
+  loop
+  muted
+  playsInline
+>
+        <source src="/bannerVideo.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Content */}
+      <div className="relative z-10 flex items-center justify-center h-full text-white">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold">
+          What People Think About Us
+        </h1>
       </div>
+
     </div>
   );
 };

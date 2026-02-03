@@ -1,112 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import axios from "axios";
 import { FaStar } from "react-icons/fa";
 
 const Testimonial = () => {
-  const testimonialsData = [
-    {
-      img: "https://dummyimage.com/302x302",
-      text: "Finding technology and support together is rare. Working with RasoiOnCall has given me not only steady income, but also confidence and long-term stability.",
-      name: "Nitin Sharma",
-    },
-    {
-      img: "https://dummyimage.com/300x300",
-      text: "RasoiOnCall gave me the opportunity to turn my cooking skills into a professional career. Their team is always ready to guide and support me.",
-      name: "Alpar Khamu",
-    },
-    {
-      img: "https://dummyimage.com/305x305",
-      text: "I was always searching for a platform that truly values human connection. RasoiOnCall proved my trust was right.",
-      name: "Henry Latham",
-    },
-    {
-      img: "https://dummyimage.com/302x302",
-      text: "Finding technology and support together is rare. Working with RasoiOnCall has given me not only steady income, but also confidence and long-term stability.",
-      name: "Nitin Sharma",
-    },
-    {
-      img: "https://dummyimage.com/300x300",
-      text: "RasoiOnCall gave me the opportunity to turn my cooking skills into a professional career. Their team is always ready to guide and support me.",
-      name: "Alpar Khamu",
-    },
-    {
-      img: "https://dummyimage.com/305x305",
-      text: "I was always searching for a platform that truly values human connection. RasoiOnCall proved my trust was right.",
-      name: "Henry Latham",
-    },
-    {
-      img: "https://dummyimage.com/302x302",
-      text: "Finding technology and support together is rare. Working with RasoiOnCall has given me not only steady income, but also confidence and long-term stability.",
-      name: "Nitin Sharma",
-    },
-    {
-      img: "https://dummyimage.com/300x300",
-      text: "RasoiOnCall gave me the opportunity to turn my cooking skills into a professional career. Their team is always ready to guide and support me.",
-      name: "Alpar Khamu",
-    },
-    {
-      img: "https://dummyimage.com/305x305",
-      text: "I was always searching for a platform that truly values human connection. RasoiOnCall proved my trust was right.",
-      name: "Henry Latham",
-    },
-  ];
+  const [testimonials, setTestimonials] = useState([]); // MUST be array
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  //Slider settings
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8000/testimonial/getAll"
+        );
+
+        // 🔥 FIX IS HERE
+        const data = Array.isArray(res.data)
+          ? res.data
+          : res.data.data || [];
+
+        setTestimonials(data);
+      } catch (err) {
+        setError("Failed to load testimonials");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
   const settings = {
-    dots: true, //Show dots for navigations
-    infinite: true, //Infinite Scrolling
-    speed: 500, //Transition speed in ms
-    slidesToShow: 3, //Number of testimonials visible at atime
-    slidesToScroll: 1, //Number of testimonials to scroll per swipe
-    autoplay: true, //Enable auto-slide
-    autoplaySpeed: 3000, //Auto-slide interval in ms
-    pauseOnHover: true, //Pause auto-slide when hovering
-    swipe: true, //Enable mouse and touch swipe
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
     responsive: [
-      {
-        breakpoint: 1024, //Below 1024px
-        settings: {
-          slidesToShow: 2, //Show 2 testimonials
-        },
-      },
-      {
-        breakpoint: 640, //Below 640px
-        settings: {
-          slidesToShow: 1, //Show 1 testimonials
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
     ],
   };
 
+  if (loading) return <p className="text-center py-10">Loading...</p>;
+  if (error) return <p className="text-center text-red-600">{error}</p>;
+
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center mb-8">Testimonials</h1>
-
       <Slider {...settings}>
-        {testimonialsData.map((testimonial) => (
-          <div key={testimonial.id} className="p-4">
-            <div className="bg-green-800 hover:bg-white rounded-lg p-6 text-center">
+        {testimonials.map((t) => (
+          <div key={t._id} className="p-4">
+            <div className="bg-green-800 p-6 rounded-lg text-center">
               <img
-                alt="testimonial"
-                className="w-20 h-20 mb-4 object-cover object-center rounded-full border-2 border-gray-200 bg-gray-100 mx-auto"
-                src={testimonial.image}
+                src={`data:image/jpeg;base64,${t.profileimage}`}
+                alt={t.name}
+                className="w-20 h-20 mx-auto rounded-full mb-4 object-cover"
               />
 
-              <p className="leading-relaxed hover:text-black text-white">
-                {testimonial.text}
-              </p>
+              <p className="text-white">{t.content}</p>
 
-              <div className="flex justify-center gap-1 mb-4 mt-5 text-orange-500">
+              <div className="flex justify-center gap-1 mt-4 text-orange-500">
                 {[...Array(5)].map((_, i) => (
                   <FaStar key={i} />
                 ))}
               </div>
 
-              <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
-
-              <h2 className="text-white font-medium title-font tracking-wider text-sm">
-                {testimonial.name}
-              </h2>
+              <h2 className="text-white mt-3 font-semibold">{t.name}</h2>
             </div>
           </div>
         ))}

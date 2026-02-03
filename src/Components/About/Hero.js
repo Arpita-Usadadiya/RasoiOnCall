@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <section className="text-gray-600 bg-[#e5e5e5] body-font">
@@ -17,9 +19,13 @@ const Hero = () => {
             </p>
            <p className='text-black text-2xl'>  We aim to bridge the gap between delicious food and a healthy lifestyle while empowering our cooks.</p>
             <div className="flex justify-center">
-              <button className="inline-flex mt-10 text-3xl font-bold text-white bg-black border-0 py-2 px-6   rounded-lg ">
-                Contact Us
-              </button>
+              
+              <button
+              onClick={() => navigate("/contact")}
+              className="bg-white text-orange-500 font-bold px-6 py-3 mt-10 rounded-lg border-2 border-orange-400 hover:bg-orange-50 transition"
+          >
+              Contact Us
+          </button>
              
             </div>
           </div>

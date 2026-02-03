@@ -1,7 +1,9 @@
 import React from "react";
 import foodImg from "../../assets/food.png";
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     
      <section className="w-full h-[500px] flex flex-col md:flex-row">
@@ -15,8 +17,11 @@ const Hero = () => {
             Never have to worry about skipping meals or eating oily outside food.
           </p>
 
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-md font-semibold ml-10">
-            Book Now
+          <button
+              onClick={() => navigate("/booking")}
+              className="bg-orange-400 text-white font-bold px-6 py-3 mt-5 ml-10 rounded-lg border-2 border-orange-400 hover:bg-orange-50 transition"
+          >
+              Book Now
           </button>
         </div>
 

@@ -1,7 +1,9 @@
 import React from "react";
 import chefImage from "../../assets/chefImage.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const LowerBanner1 = () => {
+  const navigate = useNavigate();
   return (
     <section className="w-full flex flex-col md:flex-row items-center bg-white py-10 md:py-0">
 
@@ -31,9 +33,12 @@ const LowerBanner1 = () => {
           Get a professional cook within 60 minutes
         </p>
 
-        <button className="bg-black hover:bg-orange-600 transition text-white px-8 py-3 rounded-md font-semibold">
-          Book Now
-        </button>
+        <button
+            onClick={() => navigate("/booking")}
+            className="mt-8 bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-md font-semibold"
+          >
+            Book Now
+          </button>
 
       </div>
     </section>

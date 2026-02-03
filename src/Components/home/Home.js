@@ -15,8 +15,11 @@ import WhyChooseUs from "./WhyChoose";
 import TakeItForward from "./TakeItFormward";
 import TabSwitchComponent from "./TabSwitch";
 
+
 const Home = () => {
+  
   return (
+    <>
     <div>
 
      <Carousel2/>
@@ -37,6 +40,8 @@ const Home = () => {
       <TakeItForward/>
      <FoodBanner1/>
     </div>
+
+    </>
   )
 }
 

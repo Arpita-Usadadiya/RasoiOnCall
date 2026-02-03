@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import websiteBanner from "../../assets/websiteBanner.png";
+import { useNavigate } from "react-router-dom";
 
 const Carousel3 = () => {
+  const navigate = useNavigate();
   const slides = [
     {
       bgImage: websiteBanner,
@@ -33,7 +35,10 @@ const Carousel3 = () => {
 
           <p className="text-sm md:text-xl text-white pt-5 pb-5">Experience the taste from around the world without leaving the coziness of home.</p>
 
-          <button className="mt-10 bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-md text-lg font-semibold">
+          <button
+            onClick={() => navigate("/booking")}
+            className="mt-8 bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-md font-semibold"
+          >
             Get Started
           </button>
         </div>

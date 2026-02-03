@@ -1,11 +1,13 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import Register_on_app from "../../assets/OneTimeCook/Register_on_app.svg";
 import select_your_service from "../../assets/OneTimeCook/select_your_service.svg";
 import make_payment from "../../assets/OneTimeCook/make_payment.svg";
 import Get_a_cook from "../../assets/OneTimeCook/Get_a_cook.svg";
 
 const Work = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -93,7 +95,10 @@ const Work = () => {
                   </p>
                 </div>
               </div>
-              <button className="bg-white text-orange-500 text-md font-bold w-32 rounded-lg border-2 border-orange-400 h-12">
+              <button
+                onClick={() => navigate("/booking")}
+                className="bg-white text-orange-500 font-bold px-6 py-3 rounded-lg border-2 border-orange-400 hover:bg-orange-50 transition"
+              >
                 Book Now
               </button>
             </div>

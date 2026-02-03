@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ChefImg4 from "../../assets/ChefImg4.png";
 import ChefImg2 from "../../assets/ChefImg2.png";
 import ChefImg1 from "../../assets/ChefImg1.png";
+import { useNavigate } from "react-router-dom";
 
 const slides = [
   {
@@ -25,6 +26,7 @@ const slides = [
 ];
 
 const Carousel3 = () => {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -36,7 +38,6 @@ const Carousel3 = () => {
 
   return (
     <section className="relative w-full h-[90vh] md:min-h-screen overflow-hidden  bg-black">
-
       {/* Background image */}
       <div
         className="absolute inset-0 bg-no-repeat bg-center md:bg-right bg-cover  transition-all duration-700"
@@ -49,7 +50,6 @@ const Carousel3 = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 py-16 md:py-24 h-full flex items-center">
         <div className="w-full md:w-1/2 text-white text-center md:text-left">
-
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
             {slides[current].title}
           </h1>
@@ -58,7 +58,10 @@ const Carousel3 = () => {
             {slides[current].desc}
           </p>
 
-          <button className="mt-6 sm:mt-8 bg-orange-500 hover:bg-orange-600 transition px-8 sm:px-10 py-3 rounded-md font-semibold shadow-lg">
+          <button
+            onClick={() => navigate("/booking")}
+            className="bg-white text-orange-500 font-bold px-6 py-3 mt-10 rounded-lg border-2 border-orange-400 hover:bg-orange-50 transition"
+          >
             {slides[current].btn}
           </button>
         </div>

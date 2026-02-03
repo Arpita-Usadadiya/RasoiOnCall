@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import websiteBanner from "../../assets/websiteBanner.png";
 
 const Carousel2 = () => {
@@ -7,6 +8,7 @@ const Carousel2 = () => {
       bgImage: websiteBanner,
     },
   ];
+  const navigate = useNavigate();
 
   const [currentSlide] = useState(0);
 
@@ -32,8 +34,11 @@ const Carousel2 = () => {
             <span className="text-orange-500">To Hire a Cook</span>
           </h1>
 
-          <button className="mt-10 bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-md text-lg font-semibold">
-            Get Started
+          <button
+              onClick={() => navigate("/booking")}
+              className="bg-white text-orange-500 font-bold px-6 py-3 mt-10 rounded-lg border-2 border-orange-400 hover:bg-orange-50 transition"
+          >
+              Get Started
           </button>
         </div>
       </div>

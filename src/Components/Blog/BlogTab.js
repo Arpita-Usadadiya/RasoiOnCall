@@ -14,14 +14,23 @@ const TabSwitch = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/blog/getAll");
-        const blogData = response.data;
-        setData(blogData);
-        if (blogData.length > 0) {
-          setActiveTab(blogData[0].category);
+        const res = await axios.get("http://localhost:8000/blog/getAll");
+
+        // 🔒 Prevent duplicate blogs using _id
+        setData((prevData) => {
+          const map = new Map();
+          [...prevData, ...res.data].forEach((item) => {
+            map.set(item._id, item);
+          });
+          return Array.from(map.values());
+        });
+
+        // set default tab safely
+        if (res.data.length > 0 && res.data[0].category.length > 0) {
+          setActiveTab((prev) => prev || res.data[0].category[0]);
         }
       } catch (err) {
-        setError("Failed to fetch blog data.");
+        setError("Failed to fetch blog data");
       } finally {
         setLoading(false);
       }
@@ -33,8 +42,8 @@ const TabSwitch = () => {
   const fetchBlogDetails = async (id) => {
     setModalLoading(true);
     try {
-      const response = await axios.get(`http://localhost:8000/blog/get/${id}`);
-      setSelectedBlog(response.data);
+      const res = await axios.get(`http://localhost:8000/blog/get/${id}`);
+      setSelectedBlog(res.data);
       setModalOpen(true);
     } catch (err) {
       console.error("Failed to fetch blog details", err);
@@ -42,54 +51,76 @@ const TabSwitch = () => {
       setModalLoading(false);
     }
   };
-// filter the data based on the active tab
-  const categories = [...new Set(data.map((item) => item.category))];
-  const filteredData = data.filter((item) => item.category === activeTab);
+
+  // 🔹 Unique categories
+  const categories = [
+    "All",
+    ...new Set(data.flatMap((item) => item.category)),
+  ];
+
+  // 🔹 Filter logic
+  const filteredData =
+    activeTab === "All"
+      ? data
+      : data.filter((item) => item.category.includes(activeTab));
 
   if (loading) return <div className="text-center mt-10">Loading...</div>;
   if (error) return <div className="text-center text-red-600 mt-10">{error}</div>;
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      {/* Tab Buttons */}
-      <div className="flex space-x-4 mt-5 mb-6 justify-center items-center flex-wrap">
-        {categories.map((category, index) => (
+      {/* Tabs */}
+      <div className="flex gap-3 justify-center flex-wrap mb-8">
+        {categories.map((cat) => (
           <button
-            key={index}
-            onClick={() => setActiveTab(category)}
-            className={`px-4 py-2 rounded-lg ${
-              activeTab === category
-                ? "bg-purple-700 text-white"
-                : "bg-gray-200 text-black"
-            }`}
+            key={cat}
+            onClick={() => setActiveTab(cat)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition
+              ${
+                activeTab === cat
+                  ? "bg-purple-700 text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
           >
-            {category}
+            {cat}
           </button>
         ))}
       </div>
 
       {/* Blog Cards */}
-      <div className="grid grid-cols-1 mt-10 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredData.map((item) => (
           <div
             key={item._id}
             onClick={() => fetchBlogDetails(item._id)}
-            className="cursor-pointer bg-white shadow-md mt-10 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-200"
+            className="bg-white shadow rounded-lg cursor-pointer hover:scale-105 transition"
           >
             <img
-              src={item.image}
+              src={`data:image/jpeg;base64,${item.image}`}
               alt={item.title}
-              className="w-full h-40 object-cover"
+              className="h-40 w-full object-cover rounded-t-lg"
             />
+
             <div className="p-4">
-              <h3 className="text-lg font-bold">{item.title}</h3>
-              <p className="text-gray-600 mt-2">
-                {item.content?.slice(0, 100)}...
+              <h3 className="font-bold text-lg">{item.title}</h3>
+              <p className="text-sm text-gray-600 mt-2">
+                {item.content.slice(0, 90)}...
               </p>
-              <p className="text-lg font-bold text-blue-600">{item.category}</p>
-              <div className="mt-4 flex justify-between text-sm text-gray-500">
+
+              <div className="flex flex-wrap gap-2 mt-3">
+                {item.category.map((cat) => (
+                  <span
+                    key={cat}
+                    className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded"
+                  >
+                    {cat}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex justify-between text-xs text-gray-500 mt-3">
                 <span>{new Date(item.updatedAt).toLocaleDateString()}</span>
-                <span>~ 3 min</span>
+                <span>~3 min</span>
               </div>
             </div>
           </div>
@@ -98,28 +129,33 @@ const TabSwitch = () => {
 
       {/* Modal */}
       {modalOpen && selectedBlog && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center px-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full overflow-auto max-h-[80vh] p-6 relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center px-4">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6 relative">
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute top-3 right-4 text-gray-600 hover:text-black text-xl"
+              className="absolute top-3 right-4 text-2xl"
             >
               &times;
             </button>
+
             {modalLoading ? (
-              <div className="text-center">Loading details...</div>
+              <div className="text-center">Loading...</div>
             ) : (
               <>
                 <img
-                  src={selectedBlog.image}
+                  src={`data:image/jpeg;base64,${selectedBlog.image}`}
                   alt={selectedBlog.title}
                   className="w-full h-60 object-cover rounded"
                 />
-                <h2 className="text-2xl font-bold mt-4">{selectedBlog.title}</h2>
-                <p className="text-sm text-gray-500 mb-2">
+                <h2 className="text-2xl font-bold mt-4">
+                  {selectedBlog.title}
+                </h2>
+                <p className="text-sm text-gray-500">
                   {new Date(selectedBlog.updatedAt).toLocaleDateString()}
                 </p>
-                <p className="text-gray-800 mt-4">{selectedBlog.content}</p>
+                <p className="mt-4 text-gray-800">
+                  {selectedBlog.content}
+                </p>
               </>
             )}
           </div>

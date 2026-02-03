@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 const steps = [
   {
@@ -28,6 +29,7 @@ const steps = [
 ];
 
 const Work = () => {
+  const navigate = useNavigate();
   return (
     <section className="w-full py-20 bg-white">
       
@@ -72,9 +74,12 @@ const Work = () => {
         </div>
       </div>
       <div>
-        <button className="mt-10 mb-10 mr-10 float-right px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition">
-          Book Now
-        </button>
+        <button
+              onClick={() => navigate("/booking")}
+              className="bg-white text-orange-500 font-bold px-6 py-3 mt-10 rounded-lg border-2 border-orange-400 hover:bg-orange-50 transition"
+          >
+              Get Started
+          </button>
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
 import React from "react";
 import chefImg from "../../assets/ChefinvibrantkitchenbackgroundImg.png";
+import { useNavigate } from "react-router-dom";
 
 const Carousel3 = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative w-full min-h-[90vh] bg-black overflow-hidden">
-
       {/* Background image (NO CROP) */}
       <div
         className="absolute inset-0 bg-no-repeat bg-contain bg-right -0"
@@ -28,12 +29,15 @@ const Carousel3 = () => {
             Forget ordering online! Get fresh food cooked in your kitchen.
           </p>
 
-          <button className="mt-8 bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-md font-semibold">
+          <button
+            onClick={() => navigate("/booking")}
+            className="mt-8 bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-md font-semibold"
+          >
             Get Started
           </button>
+          
         </div>
       </div>
-
     </section>
   );
 };
