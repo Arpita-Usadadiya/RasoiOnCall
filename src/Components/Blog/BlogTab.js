@@ -42,7 +42,7 @@ const TabSwitch = () => {
   const fetchBlogDetails = async (id) => {
     setModalLoading(true);
     try {
-      const res = await axios.get(`http://localhost:8000/blog/get/${id}`);
+      const res = await axios.get(`https://rasoioncallbackend.onrender.com/blog/get/${id}`);
       setSelectedBlog(res.data);
       setModalOpen(true);
     } catch (err) {
