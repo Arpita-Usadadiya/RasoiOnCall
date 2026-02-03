@@ -11,7 +11,7 @@ const Heart1 = () => {
             <div className="w-full sm:p-4 px-4 mb-6">
               <h1 className="title-font   leading-normal text-3xl mb-2 text-black">
               "<br/>
-              "I will never go back to ordering food online because ChefKart just works great for me!"
+              "I will never go back to ordering food online because RasoiOnCall just works great for me!"
               </h1>
              <p className='mt-5 text-red-500 text-2xl font-bold'>Pramiti Upadhyay</p>
             </div>

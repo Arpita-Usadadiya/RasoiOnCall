@@ -20,7 +20,7 @@ const Heart2 = () => {
             <div className="w-full sm:p-4 px-4 mb-6">
               <h1 className="title-font leading-normal text-3xl mb-2 text-black">
                 "<br />
-                "जहाँ आपको इज़्ज़त नहीं मिले, ChefKart उस घर में आपको कभी नहीं भेजेगी।"!"
+                "जहाँ आपको इज़्ज़त नहीं मिले, RasoiOnCall उस घर में आपको कभी नहीं भेजेगी।"!"
               </h1>
               <p className="mt-5 text-red-500 text-2xl font-bold">अजनहर बीबी</p>
             </div>
