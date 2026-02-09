@@ -3,6 +3,9 @@ import ConfirmModal from "./ConfirmModal";
 
 const BookingForm = () => {
   const [members, setMembers] = useState(1);
+  const [visitDate, setVisitDate] = useState("");
+const [visitTime, setVisitTime] = useState("03:00 PM");
+
   const [showModal, setShowModal] = useState(false);
   const pricingConfig = {
     "One Time Cooking": {
@@ -89,6 +92,18 @@ const BookingForm = () => {
             <option>Monthly Cook</option>
           </select>
         </div>
+
+        <input
+  type="date"
+  className="w-full mt-2 border rounded-lg p-3"
+  onChange={(e) => setVisitDate(e.target.value)}
+/>
+<select
+  className="w-full mt-2 border rounded-lg p-3"
+  onChange={(e) => setVisitTime(e.target.value)}
+/>
+
+
 
         {/* Members */}
         <div className="border rounded-lg p-4">

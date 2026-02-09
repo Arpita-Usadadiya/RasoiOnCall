@@ -32,7 +32,7 @@
 // export default Carousel2;
 
 import { useEffect, useState } from "react";
-import banner from "../../assets/banner.png"
+import banner from "../../assets/websiteBanner.png"
 
 const slides = [
   {

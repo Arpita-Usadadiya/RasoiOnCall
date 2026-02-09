@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaBriefcase } from "react-icons/fa";
 
 const TrendingCooks = () => {
@@ -63,9 +64,12 @@ const TrendingCooks = () => {
             </div>
 
             {/* Right */}
-            <button className="text-sm text-green-600 font-medium hover:underline">
+            <Link
+              to={`/chef/${chef._id}`}
+              className="text-sm text-green-600 font-medium hover:underline"
+            >
               View Profile
-            </button>
+            </Link>
           </div>
         ))}
       </div>
