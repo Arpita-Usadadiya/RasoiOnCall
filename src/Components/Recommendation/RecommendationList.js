@@ -14,32 +14,42 @@ const RecommendationList = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchSmartChefs = useCallback(async () => {
-    try {
-      setLoading(true);
+  try {
+    setLoading(true);
 
-      const query = new URLSearchParams(filters).toString();
+    // Clean filters before sending
+    const queryObj = {};
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value !== "" && value !== false) {
+        queryObj[key] = value;
+      }
+    });
+    const query = new URLSearchParams(queryObj).toString();
 
-      const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/chef/smart-match?${query}`
-      );
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/chef/smart-match?${query}`
+    );
+    const data = await res.json();
 
-      const data = await res.json();
+    console.log("API response:", data);
 
-      if (Array.isArray(data)) {
-  setChefs(data);
-} else if (Array.isArray(data.data)) {
-  setChefs(data.data);
-} else {
-  setChefs([]);
-}
-
-    } catch (err) {
-      console.error("Error fetching chefs:", err);
+    // ✅ Use data directly
+    if (Array.isArray(data.data)) {
+      setChefs(data.data);
+    } else if (Array.isArray(data)) {
+      setChefs(data);
+    } else {
       setChefs([]);
-    } finally {
-      setLoading(false);
     }
-  }, [filters]);
+  } catch (err) {
+    console.error("Error fetching chefs:", err);
+    setChefs([]);
+  } finally {
+    setLoading(false);
+  }
+}, [filters]);
+
+
 
   useEffect(() => {
     fetchSmartChefs();
