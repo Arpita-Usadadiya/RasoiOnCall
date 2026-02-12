@@ -25,11 +25,14 @@ const RecommendationList = () => {
 
       const data = await res.json();
 
-      if (data && Array.isArray(data.data)) {
-        setChefs(data.data);
-      } else {
-        setChefs([]);
-      }
+      if (Array.isArray(data)) {
+  setChefs(data);
+} else if (Array.isArray(data.data)) {
+  setChefs(data.data);
+} else {
+  setChefs([]);
+}
+
     } catch (err) {
       console.error("Error fetching chefs:", err);
       setChefs([]);
