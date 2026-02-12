@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import ChefCard from "../Chef/ChefCard";
 import PreferenceForm from "./PreferenceForm";
 
@@ -13,36 +13,34 @@ const RecommendationList = () => {
   const [chefs, setChefs] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchSmartChefs();
-  }, [filters]);
-
-  const fetchSmartChefs = async () => {
+  const fetchSmartChefs = useCallback(async () => {
     try {
       setLoading(true);
 
       const query = new URLSearchParams(filters).toString();
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/chef/smart-match?${query}`);
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/chef/smart-match?${query}`
+      );
 
       const data = await res.json();
 
-      console.log("API Response:", data); // 🔎 check structure
-
-      // ✅ SAFE SETTING
       if (data && Array.isArray(data.data)) {
         setChefs(data.data);
       } else {
         setChefs([]);
       }
-
     } catch (err) {
       console.error("Error fetching chefs:", err);
-      setChefs([]); // fallback safe
+      setChefs([]);
     } finally {
       setLoading(false);
     }
-  };
+  }, [filters]);
+
+  useEffect(() => {
+    fetchSmartChefs();
+  }, [fetchSmartChefs]);
 
   return (
     <div className="mt-10">
@@ -55,7 +53,7 @@ const RecommendationList = () => {
       )}
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-        {chefs?.map((chef) => (
+        {chefs.map((chef) => (
           <ChefCard key={chef._id} chef={chef} />
         ))}
       </div>
