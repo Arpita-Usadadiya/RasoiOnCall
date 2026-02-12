@@ -13,27 +13,28 @@ const RecommendationList = () => {
   const [chefs, setChefs] = useState([]);
   const [loading, setLoading] = useState(false);
 
- const fetchSmartChefs = useCallback(async () => {
+const fetchSmartChefs = useCallback(async () => {
   try {
     setLoading(true);
 
-    const cleanedFilters = Object.fromEntries(
-      Object.entries(filters).filter(
-        ([_, v]) => v !== "" && v !== false
-      )
-    );
-
-    const query = new URLSearchParams(cleanedFilters).toString();
+    // Clean filters before sending
+    const queryObj = {};
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value !== "" && value !== false) {
+        queryObj[key] = value;
+      }
+    });
+    const query = new URLSearchParams(queryObj).toString();
 
     const res = await fetch(
       `${import.meta.env.VITE_API_URL}/chef/smart-match?${query}`
     );
-
     const data = await res.json();
 
-    if (Array.isArray(data)) {
-      setChefs(data);
-    } else if (Array.isArray(data.data)) {
+    console.log("API response:", data);
+
+    // ✅ Always use data.data
+    if (Array.isArray(data.data)) {
       setChefs(data.data);
     } else {
       setChefs([]);
