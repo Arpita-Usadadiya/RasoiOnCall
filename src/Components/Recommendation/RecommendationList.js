@@ -23,9 +23,7 @@ const RecommendationList = () => {
 
       const query = new URLSearchParams(filters).toString();
 
-      const res = await fetch(
-        `http://localhost:8000/chef/smart-match?${query}`
-      );
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/chef/smart-match?${query}`);
 
       const data = await res.json();
 
