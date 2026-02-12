@@ -1,12 +1,7 @@
-
 import HygieneBadge from "./HygieneBadge";
 import { Link } from "react-router-dom";
 
-
 const ChefCard = ({ chef }) => {
- 
-
-
   return (
     <div className="bg-white rounded-xl shadow-md p-4 hover:shadow-xl transition">
       <img
@@ -18,8 +13,7 @@ const ChefCard = ({ chef }) => {
       <h2 className="text-xl font-semibold mt-3">{chef.name}</h2>
       <p className="text-gray-500">{chef.city}</p>
       <p className="text-yellow-500 font-bold">⭐ {chef.rating}</p>
-<HygieneBadge score={chef.hygieneScore} />
-
+      <HygieneBadge score={chef.hygieneScore} />
 
       <Link
         to={`/book/${chef._id}`}
@@ -32,4 +26,3 @@ const ChefCard = ({ chef }) => {
 };
 
 export default ChefCard;
-

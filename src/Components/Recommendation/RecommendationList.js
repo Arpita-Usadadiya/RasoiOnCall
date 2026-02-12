@@ -13,44 +13,38 @@ const RecommendationList = () => {
   const [chefs, setChefs] = useState([]);
   const [loading, setLoading] = useState(false);
 
-const fetchSmartChefs = useCallback(async () => {
-  try {
-    setLoading(true);
+  
 
-    // Clean filters before sending
-    const queryObj = {};
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value !== "" && value !== false) {
-        queryObj[key] = value;
+  const fetchSmartChefs = useCallback(async () => {
+    try {
+      setLoading(true);
+
+      const query = new URLSearchParams(filters).toString();
+
+      const res = await fetch(
+        `http://localhost:8000/chef/smart-match?${query}`
+      );
+
+      const data = await res.json();
+
+      console.log("API Response:", data); // 🔎 check structure
+
+      // ✅ SAFE SETTING
+      if (data && Array.isArray(data.data)) {
+        setChefs(data.data);
+      } else {
+        setChefs([]);
       }
-    });
-    const query = new URLSearchParams(queryObj).toString();
 
-    const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/chef/smart-match?${query}`
-    );
-    const data = await res.json();
-
-    console.log("API response:", data);
-
-    // ✅ Always use data.data
-    if (Array.isArray(data.data)) {
-      setChefs(data.data);
-    } else {
-      setChefs([]);
+    } catch (err) {
+      console.error("Error fetching chefs:", err);
+      setChefs([]); // fallback safe
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error("Error fetching chefs:", err);
-    setChefs([]);
-  } finally {
-    setLoading(false);
-  }
-}, [filters]);
+  }, [filters]);
 
-
-
-
-  useEffect(() => {
+   useEffect(() => {
     fetchSmartChefs();
   }, [fetchSmartChefs]);
 
@@ -65,7 +59,7 @@ const fetchSmartChefs = useCallback(async () => {
       )}
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-        {chefs.map((chef) => (
+        {chefs?.map((chef) => (
           <ChefCard key={chef._id} chef={chef} />
         ))}
       </div>

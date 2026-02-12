@@ -37,7 +37,7 @@ const TrendingCooks = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/chef/near-me?city=${city}`
+          `http://localhost:8000/chef/near-me?city=${city}`
         );
         const data = await res.json();
         setChefs(data.data || []);
