@@ -37,7 +37,8 @@ const TrendingCooks = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:8000/chef/near-me?city=${city}`
+          //`http://localhost:8000/chef/near-me?city=${city}` //for localhost
+          `${process.env.REACT_APP_API}/chef/near-me?city=${city}`
         );
         const data = await res.json();
         setChefs(data.data || []);

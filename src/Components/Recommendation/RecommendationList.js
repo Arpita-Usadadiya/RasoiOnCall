@@ -13,18 +13,16 @@ const RecommendationList = () => {
   const [chefs, setChefs] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  
-
   const fetchSmartChefs = useCallback(async () => {
     try {
       setLoading(true);
 
       const query = new URLSearchParams(filters).toString();
 
-     const res = await fetch(
-  `${process.env.REACT_APP_API}/chef/smart-match?${query}`
-);
-
+      const res = await fetch(
+        //`http://localhost:8000/chef/smart-match?${query}`, //for localhost
+        `${process.env.REACT_APP_API}/chef/smart-match?${query}`,
+      );
 
       const data = await res.json();
 
@@ -36,7 +34,6 @@ const RecommendationList = () => {
       } else {
         setChefs([]);
       }
-
     } catch (err) {
       console.error("Error fetching chefs:", err);
       setChefs([]); // fallback safe
@@ -45,7 +42,7 @@ const RecommendationList = () => {
     }
   }, [filters]);
 
-   useEffect(() => {
+  useEffect(() => {
     fetchSmartChefs();
   }, [fetchSmartChefs]);
 
