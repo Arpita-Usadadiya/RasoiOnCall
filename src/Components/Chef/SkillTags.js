@@ -1,6 +1,6 @@
-const SkillTags = ({ tags }) => {
+const SkillTags = ({ tags = [] }) => {
   return (
-    <div className="flex flex-wrap gap-2 mt-2">
+    <div className="flex flex-wrap gap-2 mt-3">
       {tags.map((tag, i) => (
         <span
           key={i}

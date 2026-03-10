@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import ProtectedRoute from "./Components/ProtectedRoute"
 
 import NotificationBanner from "./Components/Header/NotificationBanner";
 import Footer from "./Components/Footer/Footer";
@@ -18,12 +18,25 @@ const Signup = lazy(() => import("./Components/Booking/SignUp"));
 const Home = lazy(() => import("./Components/home/Home"));
 const About = lazy(() => import("./Components/About/About"));
 const Contact = lazy(() => import("./Components/Contact/Contact"));
+const UserDashboard = lazy(() =>
+  import("./Components/pages/User/MyBookings")
+);
+const ChefDashboard = lazy(() =>
+  import("./Components/pages/Chef/ChefDashboard")
+);
+const AdminDashboard = lazy(() =>
+  import("./Components/pages/Admin/AdminDashboard")
+);
+
 const ChefConnection = lazy(() =>
   import("./Components/ChefConnections/ChefConnection")
 );
 const TrendingCooks = lazy(() =>
   import("./Components/Cooks/TrendingCook")
 );
+const PaymentSuccess = lazy(() => 
+  import("./Components/pages/User/PaymentSuccess")
+)
 
 const Booking = lazy(() => import("./Components/Booking/BookingPage"));
 const Month = lazy(() => import("./Components/CookForAmonth/Month"));
@@ -36,6 +49,9 @@ const Blog = lazy(() => import("./Components/Blog/Blog"));
 const Recommendations = lazy(() =>
   import("./Components/Recommendation/Recommendations")
 );
+const ChefDetails = lazy(() =>
+  import("./Components/Chef/ChefDetails")
+);
 
 const App = () => {
   useEffect(() => {
@@ -47,10 +63,36 @@ const App = () => {
   }, []);
 
   const routes = [
-    { path: "/login", element: <Login /> },
-{ path: "/signup", element: <Signup /> },
+   { path: "/login", element: <Login /> },
+  { path: "/signup", element: <Signup /> },
 
-    { path: "/", element: <Home /> },
+  { path: "/", element: <Home /> },
+
+  {
+    path: "/chef-dashboard",
+    element: (
+      <ProtectedRoute allowedRoles={["chef"]}>
+        <ChefDashboard />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/my-bookings",
+    element: (
+      <ProtectedRoute allowedRoles={["user"]}>
+        <UserDashboard />
+      </ProtectedRoute>
+    ),
+  },
+
+  {
+    path: "/admin-dashboard",
+    element: (
+      <ProtectedRoute allowedRoles={["admin"]}>
+        <AdminDashboard />
+      </ProtectedRoute>
+    ),
+  },
     { path: "/about", element: <About /> },
     { path: "/blog", element: <Blog /> },
     { path: "/career", element: <Career /> },
@@ -58,9 +100,11 @@ const App = () => {
     
     { path: "/investor", element: <Invest /> },
     { path: "/recommendations", element: <Recommendations /> },
+    { path:"/chef/:id", element:<ChefDetails /> },
     { path: "/contact", element: <Contact /> },
     { path: "/booking", element: <Booking /> },
     { path: "/book/:chefId", element: <BookingForm /> },
+    { path: "/payment-success", element: <PaymentSuccess /> },
 
     {
   path: "/chef-search",

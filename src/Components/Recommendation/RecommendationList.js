@@ -20,8 +20,8 @@ const RecommendationList = () => {
       const query = new URLSearchParams(filters).toString();
 
       const res = await fetch(
-        //`http://localhost:8000/chef/smart-match?${query}`, //for localhost
-        `${process.env.REACT_APP_API}/chef/smart-match?${query}`,
+        `http://localhost:8000/chef/smart-match?${query}`, //for localhost
+        // `${process.env.REACT_APP_API}/chef/smart-match?${query}`,
       );
 
       const data = await res.json();

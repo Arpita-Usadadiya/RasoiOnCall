@@ -17,6 +17,7 @@ const ConfirmModal = ({ show, onClose, onConfirm }) => {
           </button>
 
           <button
+            
             onClick={onConfirm}
             className="w-1/2 bg-orange-500 text-white py-2 rounded"
           >

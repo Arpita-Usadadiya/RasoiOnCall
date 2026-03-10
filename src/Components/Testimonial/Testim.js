@@ -12,7 +12,7 @@ const Testimonial1 = () => {
     const fetchTestimonials = async () => {
       try {
         const res = await axios.get(
-          "https://rasoioncallbackend.onrender.com/testimonial/getAll"
+          // "https://rasoioncallbackend.onrender.com/testimonial/getAll"
         );
 
         // 🔥 FIX IS HERE
