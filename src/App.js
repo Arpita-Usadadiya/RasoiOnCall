@@ -36,7 +36,10 @@ const TrendingCooks = lazy(() =>
 );
 const PaymentSuccess = lazy(() => 
   import("./Components/pages/User/PaymentSuccess")
-)
+);
+const Profile = lazy(() => 
+ import("./Components/pages/User/Profile")
+);
 
 const Booking = lazy(() => import("./Components/Booking/BookingPage"));
 const Month = lazy(() => import("./Components/CookForAmonth/Month"));
@@ -105,6 +108,7 @@ const App = () => {
     { path: "/booking", element: <Booking /> },
     { path: "/book/:chefId", element: <BookingForm /> },
     { path: "/payment-success", element: <PaymentSuccess /> },
+    { path: "/profile", element: <Profile />},
 
     {
   path: "/chef-search",
