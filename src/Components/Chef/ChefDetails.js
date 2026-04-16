@@ -13,7 +13,8 @@ const ChefDetails = () => {
 
   const fetchChef = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/chef/get/${id}`);
+      // const res = await fetch(`http://localhost:8000/chef/get/${id}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/chef/get/${id}`);
       const data = await res.json();
       setChef(data.data);
     } catch (err) {

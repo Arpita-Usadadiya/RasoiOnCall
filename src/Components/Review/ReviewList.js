@@ -12,7 +12,8 @@ fetchReviews();
 const fetchReviews = async ()=>{
 
 const res = await fetch(
-`http://localhost:8000/review/chef/${chefId}`
+// `http://localhost:8000/review/chef/${chefId}`
+`${import.meta.env.VITE_API_URL}/review/chef/${chefId}`
 );
 
 const data = await res.json();
@@ -25,7 +26,8 @@ setTopReview(data.topReview);
 const likeReview = async (id)=>{
 
 await fetch(
-`http://localhost:8000/review/like/${id}`,
+// `http://localhost:8000/review/like/${id}`,
+`${import.meta.env.VITE_API_URL}/review/like/${id}`,
 {
 method:"PATCH"
 });
