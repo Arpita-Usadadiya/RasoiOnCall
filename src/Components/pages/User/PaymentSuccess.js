@@ -24,8 +24,8 @@ const PaymentSuccess = () => {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           },
+          console.log("Payment updated")
         )
-        console.log("Payment updated");
       } catch (error) {
         console.log("Payment update failed:", error);
       }

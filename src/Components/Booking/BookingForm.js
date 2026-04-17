@@ -135,8 +135,8 @@ const BookingForm = () => {
 
       // 1️⃣ Create booking first
       const bookingRes = await API.post(
-        // "http://localhost:8000/booking/createBook",
-        "/booking/createBook",
+        "http://localhost:8000/booking/createBook",
+        //"/booking/createBook",
         bookingData,
         {
           headers: {

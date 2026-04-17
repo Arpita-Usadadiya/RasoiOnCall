@@ -1,104 +1,71 @@
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 
-const ReviewList = ({chefId})=>{
+const ReviewList = ({ chefId }) => {
+  const [reviews, setReviews] = useState([]);
+  const [topReview, setTopReview] = useState(null);
 
-const [reviews,setReviews] = useState([]);
-const [topReview,setTopReview] = useState(null);
+  useEffect(() => {
+    fetchReviews();
+  }, []);
 
-useEffect(()=>{
-fetchReviews();
-},[]);
+  const fetchReviews = async () => {
+    const res = await fetch(
+      `http://localhost:8000/review/chef/${chefId}`,
+      //`${import.meta.env.VITE_API_URL}/review/chef/${chefId}`
+    );
 
-const fetchReviews = async ()=>{
+    const data = await res.json();
 
-const res = await fetch(
-// `http://localhost:8000/review/chef/${chefId}`
-`${import.meta.env.VITE_API_URL}/review/chef/${chefId}`
-);
+    setReviews(data.data);
+    setTopReview(data.topReview);
+  };
 
-const data = await res.json();
+  const likeReview = async (id) => {
+    await fetch(
+      `http://localhost:8000/review/like/${id}`,
+      //`${import.meta.env.VITE_API_URL}/review/like/${id}`,
+      {
+        method: "PATCH",
+      },
+    );
 
-setReviews(data.data);
-setTopReview(data.topReview);
+    fetchReviews();
+  };
 
-};
+  return (
+    <div className="mt-10">
+      <h2 className="text-xl font-bold mb-4">Customer Reviews</h2>
 
-const likeReview = async (id)=>{
+      {topReview && (
+        <div className="bg-yellow-100 p-4 rounded mb-5">
+          <h3 className="font-semibold">🔥 Top Review</h3>
 
-await fetch(
-// `http://localhost:8000/review/like/${id}`,
-`${import.meta.env.VITE_API_URL}/review/like/${id}`,
-{
-method:"PATCH"
-});
+          <p className="text-yellow-600">⭐ {topReview.rating}</p>
 
-fetchReviews();
+          <p>{topReview.comment}</p>
 
-};
+          <p>👍 {topReview.likes}</p>
+        </div>
+      )}
 
-return(
+      {reviews.map((r) => (
+        <div key={r._id} className="border p-4 rounded-lg mb-3">
+          <p className="font-semibold">{r.userId?.name || "User"}</p>
 
-<div className="mt-10">
+          <p className="text-yellow-500">⭐ {r.rating}</p>
 
-<h2 className="text-xl font-bold mb-4">
-Customer Reviews
-</h2>
+          <p className="text-gray-600">{r.comment}</p>
 
-{topReview && (
-
-<div className="bg-yellow-100 p-4 rounded mb-5">
-
-<h3 className="font-semibold">
-🔥 Top Review
-</h3>
-
-<p className="text-yellow-600">
-⭐ {topReview.rating}
-</p>
-
-<p>{topReview.comment}</p>
-
-<p>👍 {topReview.likes}</p>
-
-</div>
-
-)}
-
-
-{reviews.map((r)=>(
-<div
-key={r._id}
-className="border p-4 rounded-lg mb-3"
->
-
-<p className="font-semibold">
-{r.userId?.name || "User"}
-</p>
-
-<p className="text-yellow-500">
-⭐ {r.rating}
-</p>
-
-<p className="text-gray-600">
-{r.comment}
-</p>
-
-<button
-onClick={()=>likeReview(r._id)}
-className="text-blue-500 mt-2"
->
-
-👍 {r.likes} Like
-
-</button>
-
-</div>
-))}
-
-</div>
-
-);
-
+          <button
+            onClick={() => likeReview(r._id)}
+            className="text-blue-500 mt-2"
+          >
+            👍 {r.likes} Like
+          </button>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default ReviewList;
